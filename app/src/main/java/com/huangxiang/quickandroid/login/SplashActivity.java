@@ -2,55 +2,68 @@ package com.huangxiang.quickandroid.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.os.Handler;
+import android.os.Message;
 
 import com.huangxiang.quickandroid.BaseActivity;
 import com.huangxiang.quickandroid.R;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-
 public class SplashActivity extends BaseActivity {
 
-    @InjectView(R.id.button)
-    Button button;
+    private static final int GO_TO_GUIDE = 1;
+    private static final int GO_TO_LOGIN = 2;
+    private static final int GO_TO_HOME = 3;
+
+    private boolean isFirst;
+    private boolean autoLogin;
+    private String userName;
+    private String password;
+
+
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case GO_TO_GUIDE:
+                    Intent intentGuide = new Intent(SplashActivity.this,
+                            LoginActivity.class);
+                    startActivity(intentGuide);
+                    SplashActivity.this.finish();
+                    break;
+
+                case GO_TO_LOGIN:
+                    Intent intentLogin = new Intent(SplashActivity.this,
+                            LoginActivity.class);
+                    startActivity(intentLogin);
+                    SplashActivity.this.finish();
+                    break;
+                case GO_TO_HOME:
+
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ButterKnife.inject(this);
+        mHandler.sendEmptyMessageDelayed(GO_TO_LOGIN, 2000);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
+    protected void onDestroy() {
+        mHandler.removeMessages(GO_TO_GUIDE);
+        mHandler.removeMessages(GO_TO_LOGIN);
+        mHandler.removeMessages(GO_TO_HOME);
+        super.onDestroy();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @OnClick(R.id.button)
-    public void toLogin(View view) {
-        Intent intent = new Intent(this,LoginActivity.class);
+    public void toLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

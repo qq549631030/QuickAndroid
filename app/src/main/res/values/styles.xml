@@ -1,11 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="AppTheme.NoTitle">
+        <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
     </style>
 </resources>
