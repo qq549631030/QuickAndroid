@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <supports-screens android:anyDensity="true" >
+    <supports-screens android:anyDensity="true">
 
     </supports-screens>
     <application
@@ -36,6 +36,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.huangxiang.quickandroid.login.LoginActivity" />
         </activity>
+        <activity android:name=".simples.PullRefreshSimpleActivity"></activity>
+        <activity android:name=".simples.SimplesActivity"></activity>
     </application>
 
 </manifest>

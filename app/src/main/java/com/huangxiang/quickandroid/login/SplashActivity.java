@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.huangxiang.quickandroid.BaseActivity;
 import com.huangxiang.quickandroid.R;
+import com.huangxiang.quickandroid.simples.SimplesActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -27,14 +28,14 @@ public class SplashActivity extends BaseActivity {
             switch (msg.what) {
                 case GO_TO_GUIDE:
                     Intent intentGuide = new Intent(SplashActivity.this,
-                            LoginActivity.class);
+                            SimplesActivity.class);
                     startActivity(intentGuide);
                     SplashActivity.this.finish();
                     break;
 
                 case GO_TO_LOGIN:
                     Intent intentLogin = new Intent(SplashActivity.this,
-                            LoginActivity.class);
+                            SimplesActivity.class);
                     startActivity(intentLogin);
                     SplashActivity.this.finish();
                     break;
