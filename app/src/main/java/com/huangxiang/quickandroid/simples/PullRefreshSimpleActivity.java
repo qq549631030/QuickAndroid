@@ -1,24 +1,22 @@
 package com.huangxiang.quickandroid.simples;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.huangxiang.quickandroid.R;
+import com.huangxiang.quickandroid.compat.ActivityOptionsUtils;
+import com.huangxiang.quickandroid.compat.activityoptions.TransitionCompat;
 import com.huangxiang.quickandroid.pullrefresh.PullToRefreshBase;
 import com.huangxiang.quickandroid.pullrefresh.PullToRefreshListView;
 
@@ -49,15 +47,13 @@ public class PullRefreshSimpleActivity extends Activity {
         }
     };
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        getWindow().setEnterTransition(new Explode());
-        getWindow().setExitTransition(new Explode());
 
         setContentView(R.layout.pull_refresh_simple);
+        TransitionCompat.startTransition(this, R.layout.pull_refresh_simple);
+
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_to_refresh_listView);
         listView = pullToRefreshListView.getRefreshableView();
         listItemSimpleAdapter = new ListItemSimpleAdapter(this);
@@ -89,6 +85,12 @@ public class PullRefreshSimpleActivity extends Activity {
             }, 300);
         }
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityOptionsUtils.endActivityAnim(this);
     }
 
     private void refreshDatas() {

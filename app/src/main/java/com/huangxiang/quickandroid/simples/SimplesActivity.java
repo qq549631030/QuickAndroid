@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.huangxiang.quickandroid.R;
+import com.huangxiang.quickandroid.compat.ActivityOptionsUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,7 +36,8 @@ public class SimplesActivity extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.button1:
                 Intent intent = new Intent(SimplesActivity.this, PullRefreshSimpleActivity.class);
-                startActivity(intent);
+                //startActivity(intent);
+                ActivityOptionsUtils.startActivityAnim(SimplesActivity.this,intent);
                 break;
         }
     }
