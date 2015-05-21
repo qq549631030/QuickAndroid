@@ -1,9 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="AppTheme.NoTitle" parent="AppBaseTheme">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="AppBaseTheme">
         <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="TranslucentTheme.NoTitle">
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>

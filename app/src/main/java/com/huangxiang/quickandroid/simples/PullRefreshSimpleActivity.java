@@ -15,8 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.huangxiang.quickandroid.R;
-import com.huangxiang.quickandroid.compat.ActivityOptionsUtils;
-import com.huangxiang.quickandroid.compat.activityoptions.TransitionCompat;
 import com.huangxiang.quickandroid.pullrefresh.PullToRefreshBase;
 import com.huangxiang.quickandroid.pullrefresh.PullToRefreshListView;
 
@@ -52,7 +50,6 @@ public class PullRefreshSimpleActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.pull_refresh_simple);
-        TransitionCompat.startTransition(this, R.layout.pull_refresh_simple);
 
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_to_refresh_listView);
         listView = pullToRefreshListView.getRefreshableView();
@@ -90,7 +87,7 @@ public class PullRefreshSimpleActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityOptionsUtils.endActivityAnim(this);
+        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
     }
 
     private void refreshDatas() {
