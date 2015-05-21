@@ -6,9 +6,9 @@
  */
 package com.huangxiang.quickandroid.entity;
 
-import java.io.Serializable;
-
 import com.j256.ormlite.field.DatabaseField;
+
+import java.io.Serializable;
 
 /**
  * @ClassName: BaseEntity

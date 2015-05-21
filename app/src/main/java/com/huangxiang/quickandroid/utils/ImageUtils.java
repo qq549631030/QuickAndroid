@@ -5,18 +5,18 @@
  */
 package com.huangxiang.quickandroid.utils;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
 
 /**
  * @author huangxiang

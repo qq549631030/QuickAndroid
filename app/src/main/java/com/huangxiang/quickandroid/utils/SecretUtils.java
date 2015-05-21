@@ -1,5 +1,7 @@
 package com.huangxiang.quickandroid.utils;
 
+import android.util.Base64;
+
 import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
@@ -9,8 +11,6 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
-import android.util.Base64;
 
 public class SecretUtils {
 	/*
